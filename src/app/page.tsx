@@ -9,7 +9,7 @@ export default async function Home() {
     // 코드 줄이기 - DB입출력하는 코드는 서버 컴포넌트에서만 작성하기 
     let db = (await connectDB).db('forum');
     let result = await db.collection('post').find().toArray();
-    // console.log(result)
+    console.log(result)
     return (
     <div>g2</div>
     )

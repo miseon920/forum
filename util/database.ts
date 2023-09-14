@@ -1,9 +1,7 @@
 // db 연결하기
-// const client = await MongoClient.connect('mongodb+srv://miseon920:qwer1234@cluster0.5umjxru.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp');
-
 import { MongoClient } from 'mongodb'
 
-const url:string = 'mongodb+srv://miseon920:qwer1234@cluster0.5umjxru.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp'
+const url:string = `${process.env.DB_RUL}`
 const options = { useNewUrlParser: true }
 let connectDB: any
 
