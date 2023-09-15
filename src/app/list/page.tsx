@@ -1,5 +1,5 @@
 import React from 'react'
-import { connectDB } from '@/app/util/database';
+import { connectDB } from '@/util/database';
 import Link from 'next/link';
 import DetailLink from './DetailLink';
 
