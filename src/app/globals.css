@@ -1,7 +1,22 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
+
+*, ::before, ::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+
+}
+ul,ol,dl{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
 .list-bg {
     background: rgb(249, 250, 255);
     padding: 10px;
@@ -21,4 +36,24 @@
 .list-item p {
     color: grey;
     margin : 5px 0px;
+}
+.write{
+    padding:0 15px;
+}
+.write form{
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
 } 
+.write form > *{
+    display: block;
+    width: 100%;
+    margin-top:15px;
+}
+.write input, .write button{
+    height: 50px;
+}
+
+.write textarea{
+    height: 300px;
+}
