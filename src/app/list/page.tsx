@@ -1,10 +1,11 @@
 import React from 'react'
 import { connectDB } from '@/app/util/database';
+import Link from 'next/link';
 
 export default async function List() {
     let db = (await connectDB).db('forum');
     let result = await db.collection('post').find().toArray();
-    // console.log(result[0])
+    console.log(result[0])
 
     // array > object 꺼내기
     return (
@@ -12,8 +13,10 @@ export default async function List() {
         {
             result.map((item:{}, idx:number)=>
                 <div className="list-item" key={idx}>
-                    <h4>{result[idx].title}</h4>
-                    <p>1월 1일</p>
+                    <Link href={`/detail/${result[idx]._id}`}>
+                        <h4>{result[idx].title}</h4>
+                        <p>1월 1일</p>
+                    </Link>
                 </div>
             )
             // {return()} 생략가능
