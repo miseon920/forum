@@ -56,4 +56,20 @@ a{
 
 .write textarea{
     height: 300px;
+    padding: 10px;
 }
+.p-20 {
+padding: 20px;
+}
+input {
+    box-sizing: border-box;
+    padding: 10px;
+    display: block;
+    margin-bottom: 10px;
+}
+button {
+    padding: 10px 15px;
+    background: lightgray;
+    border: none;
+    border-radius: 5px;
+} 
