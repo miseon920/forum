@@ -1,7 +1,7 @@
 // 서버기능
-
+import type { NextApiRequest, NextApiResponse } from 'next'
 // export default function handler(요청, 응답) {
-export default function handler(req, res) {
+export default function handler(req:NextApiRequest, res:NextApiResponse) {
     //console.log('test'); // 주소창에 로컬호스트/api/api 요청시 터미널을 확인하면 확인가능
     // 서버에서 요청시 응답이 없으면 무한루트가 돌기 때문에 응답을 줘야함
     // 파라미터로 요청과 응답에 관한것을 넣어줘야한다.
