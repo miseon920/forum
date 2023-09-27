@@ -16,4 +16,4 @@ export default async function Join() {
 }
 
 
-// 추후 유효성 검사 및 중복검사 추가하기!
+// 추후 프론트단 유효성 검사 및 중복검사 추가하기!
