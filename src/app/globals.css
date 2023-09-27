@@ -73,3 +73,22 @@ button {
     border: none;
     border-radius: 5px;
 } 
+.navbar {
+    background: white;
+    padding: 20px;
+}
+.navbar a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+.logo {
+    font-weight: bold;
+}
+.main{
+    padding:100px 20px;
+}
+footer {
+    padding-top: 100px;
+    padding-left:  20px;
+}

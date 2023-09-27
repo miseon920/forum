@@ -2,7 +2,7 @@
 import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation' // next/router가 아니라 next/navigation 임
 import React from 'react'
 
-export default function DetailLink() {
+export default function DetailLink({item}:any) {
     // useRouter를 이용하여 이동시키기 - 리액트 훅이므로 client 컴포넌트 안에서만 사용가능
     let router = useRouter();
     let pathName = usePathname(); // 현재 url 출력
@@ -14,7 +14,8 @@ export default function DetailLink() {
         3. 페이지 이동, prefetch useRouter
     */
     return (
-        <button onClick={()=>{ router.push('/')}}>버튼</button>
+        // <button onClick={()=>{ router.push('/')}}>버튼</button>
+        <button onClick={()=>{ router.push(`/update/${item['_id']}`)}}>수정✏️</button>
         /*
             router 쓰는경우
             - 페이지 이동 router.push('이동할 경로');

@@ -19,7 +19,7 @@ export default async function List() {
                         <h4>{result[idx].title}</h4>
                         <p>1월 1일</p>
                     </Link>
-                    <DetailLink />
+                    <DetailLink item={item} />
                 </div>
             )
             // {return()} 생략가능

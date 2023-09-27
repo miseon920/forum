@@ -12,6 +12,8 @@ export default async function Home() {
     // let result = await db.collection('post').find().toArray();
     // console.log(result)
     return (
-    <div>g2</div>
+    <div className="main">
+        방명록 써주세요!
+    </div>
     )
 }
