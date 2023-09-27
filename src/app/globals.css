@@ -89,6 +89,13 @@ button {
     padding:100px 20px;
 }
 footer {
-    padding-top: 100px;
-    padding-left:  20px;
+    padding: 50px 20px;
+}
+.delBtn{
+    margin-left: 5px;
+}
+/* 애니메이션 효과 */
+.list-item{
+    opacity: 1;
+    transition:  all 1s;
 }
