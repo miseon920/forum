@@ -72,3 +72,28 @@
 * 서버기능 만들기(api)
     1. app > api 폴더를 만들기 (신버전이라 잘안됌)
     2. pages > api 폴더를 만들기 (현재 프로젝트는 이렇게 진행)
+
+
+# npm run build
+
+<img src="./public/build.png">
+
+라우트에서
+
+- 첫번째 동그라미 모양 : 스태틱 랜더링 (디폴트값)
+- 두번째 람다모양 : 다이나믹 랜더링 (```getServerSession```을 쓰면 모든페이지가 람다일수 있음)
+
+> 
+    - λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
+    - ○  (Static)  automatically rendered as static HTML (uses no initial props)
+
++ list 페이지 같은 경우는 새로 글을 쓸때마다 그려줘야 하므로 다이나믹 랜더링이 이루어 져야한다.
++ ```npm run start``` 를 사용하면 실제 배포된 형태를 볼 수 있는대 리스트에 글을 써도 바로 올라오지 않음
++ ```npm run build``` 때 보여준 코드만 보여준다. 따라서 다이나믹 랜더링으로 바꾸어 주어야함
+
+# env
+
+- 환경변수를 만들때 ```NEXT_PUBLIC_ ``` 를 붙여서 만들어 주어야 적용됨
+
+> generateBuildId가 달라져서 오류 해결
+<https://nextjs.org/docs/app/api-reference/next-config-js/generateBuildId>

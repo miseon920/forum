@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import {connectDB} from "@/util/database"
 
 export default async function Home() {

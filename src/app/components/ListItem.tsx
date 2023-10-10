@@ -37,7 +37,7 @@ export default function ListItem({result}: any) {
             - get 요청은 fetch('/url')
             - 요청완료시 코드실행은 .then()
         */
-        fetch(`/api/delete?id=${item._id}`)
+        fetch(`/api/delete?id=${item._id.toString()}`)
         .then((res)=> res.json())
         .then((res)=>{
             alert(res);
