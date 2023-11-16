@@ -1,7 +1,7 @@
 // db 연결하기
 import { MongoClient } from 'mongodb'
 
-const url:string = `${process.env.NEXT_PUBLIC_DB_RUL}`
+const url:string = `${process.env.NEXT_PUBLIC_DB_URL}`
 const options = { useNewUrlParser: true }
 let connectDB: any
 
