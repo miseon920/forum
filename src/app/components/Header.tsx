@@ -12,7 +12,11 @@ export default async function Header() {
     <div className="navbar"> 
         <Link href="/" className="logo">Appleforum</Link> 
         <Link href="/list">List</Link>
-        <Link href="/write">Write</Link>
+        {
+            session? <Link href="/write">Write</Link>
+            : null
+
+        }
         <LoginBtn session={session}/>
     </div>
   )

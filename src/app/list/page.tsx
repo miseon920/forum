@@ -1,6 +1,7 @@
 import React from 'react'
 import { connectDB } from '@/util/database';
 import ListItem from '../components/ListItem';
+import ListItemFetch from '../components/ListItemFetch';
 
 // 다이나믹 랜더링으로 변경하기
 export const dynamic = 'force-dynamic'; // 이페이지는 다이나믹 페이지로 보여주겠다는 의미
@@ -26,7 +27,7 @@ export default async function List() {
     // array > object 꺼내기
     return (
     //   <ListItem result={result}/>
-      <ListItem  result={result} />
+      <ListItemFetch  result={result} />
     )
   } 
 

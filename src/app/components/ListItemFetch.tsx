@@ -8,7 +8,7 @@ type HTMLElementEvent<T extends HTMLElement> = Event & {
     target: T;
 }
 
-export default function ListItem({result}: any) {
+export default function ListItemFetch({result}: any) {
     // const [num, setNum] = useState(0);
     // 클라이언트 컴포넌트에서는 db를 조작하는것을 적으면 안됌, 예)let db = ...
     // 컴포넌트가 많아질수록 props를 쓰는 것은 매우복잡할수 있으므로 서버에 요청하는 방식으로 쓰는것이 효율적이다
@@ -49,8 +49,11 @@ export default function ListItem({result}: any) {
                 body: '데이터' //전송할 데이터적기, 배열이나 객체일 경우 JSON.stringify('전송할값') 으로 적어야함
             })
         */
-        fetch('/api/delete',{
+        fetch('/api/delete_fetch',{
             method: "DELETE",  // post를 써도 무방함
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({_id: item._id})
             //서버와 데이터 주고받을 땐 원래 문자나 숫자밖에 주고받을 수 없기 때문에 무자로 만들기 위해 JSON.stringify 사용
         }).then((result) => {
@@ -104,4 +107,24 @@ export default function ListItem({result}: any) {
     2. URL parameter 사용하기
     - 클라이언트쪽과 마찬가지로 서버에서도 [다이나믹경로] 를 쓰게 되면 [다이나믹경로].ts 가 발생한다.
     - 서버측에서는 요청.query 를 사용하여 출력할 수 있다.
+
+    3. JSON 포맷으로 전달하는 방법(application/json 방식)
+    ```
+    const obj = {hello: 'world'};
+
+    const data = {
+    method: 'POST'.
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(obj)
+    };
+
+    fetch('./new', data)
+    .then((res) => res.text())
+    .then(console.log);
+    });
+
+    ```
+    https://stonefree.tistory.com/417#google_vignette
 */
