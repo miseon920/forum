@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import AuthSession from "./components/AuthSession";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,17 +13,25 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+        <AuthSession>
+            <Header />
+            {children}
+            <Footer />
+        </AuthSession>
     </body>
     </html>
   )
 }
+
+
+/*
+    전체적으로 썻기 때문에 이제 next-auth에 있는 signIn, signOut등  'use client' 에서 메서드를 호출하면 된다.
+    useSession은 서버클라이언트에서 사용불가능, 클라이언트 서버에서만 사용 가능
+*/

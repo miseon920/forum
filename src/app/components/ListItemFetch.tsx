@@ -7,9 +7,13 @@ import { ObjectId } from 'mongodb'
 type HTMLElementEvent<T extends HTMLElement> = Event & {
     target: T;
 }
-
-export default function ListItemFetch({result, session}: any) {
-    console.log(result, session)
+interface propsInfo {
+    result: any;
+    session: any;
+    // optional?: string; // 선택적인 경우
+    // onClick: (name: string) => void; // 함수를 props로 받을 경우
+}
+export default function ListItemFetch({result, session }: propsInfo) {
     // const [num, setNum] = useState(0);
     // 클라이언트 컴포넌트에서는 db를 조작하는것을 적으면 안됌, 예)let db = ...
     // 컴포넌트가 많아질수록 props를 쓰는 것은 매우복잡할수 있으므로 서버에 요청하는 방식으로 쓰는것이 효율적이다
