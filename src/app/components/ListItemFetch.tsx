@@ -8,7 +8,8 @@ type HTMLElementEvent<T extends HTMLElement> = Event & {
     target: T;
 }
 
-export default function ListItemFetch({result}: any) {
+export default function ListItemFetch({result, session}: any) {
+    console.log(result, session)
     // const [num, setNum] = useState(0);
     // 클라이언트 컴포넌트에서는 db를 조작하는것을 적으면 안됌, 예)let db = ...
     // 컴포넌트가 많아질수록 props를 쓰는 것은 매우복잡할수 있으므로 서버에 요청하는 방식으로 쓰는것이 효율적이다
@@ -84,10 +85,17 @@ export default function ListItemFetch({result}: any) {
                         <h4>{result[idx].title}</h4>
                         <p>1월 1일</p>
                     </Link>
-                    <DetailLink item={item} />
-                    <button className='delBtn' onClick={(e)=> {
-                        deletePost(item, e);
-                    }}>삭제 🗑️</button>
+                    {
+                        session && session.user.email == result[idx].author ?
+                        <>
+                            <DetailLink item={item}/>
+                            <button className='delBtn' onClick={(e)=> {
+                                deletePost(item, e);
+                            }}>삭제 🗑️</button>
+                        </>
+                    : null
+                    }
+                    
                 </div>
             )
             // {return()} 생략가능

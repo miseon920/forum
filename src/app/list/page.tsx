@@ -2,6 +2,8 @@ import React from 'react'
 import { connectDB } from '@/util/database';
 import ListItem from '../components/ListItem';
 import ListItemFetch from '../components/ListItemFetch';
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
 
 // 다이나믹 랜더링으로 변경하기
 export const dynamic = 'force-dynamic'; // 이페이지는 다이나믹 페이지로 보여주겠다는 의미
@@ -17,6 +19,7 @@ export default async function List() {
         item._id = item._id.toString()
         return item
     })
+    let session = await getServerSession(authOptions);
 
     /* get 요청결과 캐싱기능 - 서버 자원 절약 및 db 부담을 줄일 수 있음
         await fetch('url', {cache: 'force-cache'}) <-> {cache: 'force-cache'} 를 생략해도 캐싱이 된다.
@@ -31,7 +34,7 @@ export default async function List() {
     // array > object 꺼내기
     return (
     //   <ListItem result={result}/>
-      <ListItemFetch  result={result} />
+      <ListItemFetch result={result} session={session} />
     )
   } 
 
