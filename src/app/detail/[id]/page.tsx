@@ -9,10 +9,12 @@ export default async function Detail(props: any) {
     // MongoDB에서 게시물 하나만 찾고 싶으면 .findOne() 
     //console.log(props.params); //   props결과  { params: { id: '1' }, searchParams: {} }
   return (
-    <div>
-        <h4>상세페이지</h4>
-        <h3>{result.title}</h3>
-        <p>{result.content}</p>
+    <div className='list-bg'>
+        <div className="list-item">
+            <h4>상세페이지</h4>
+            <h3>{result.title}</h3>
+            <p>{result.content}</p>
+        </div>
     </div>
   )
 }

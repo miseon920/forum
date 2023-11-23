@@ -17,7 +17,7 @@ export default async function Header() {
             : null
 
         }
-        <LoginBtn session={session}/>
+        <LoginBtn />
     </div>
   )
 }

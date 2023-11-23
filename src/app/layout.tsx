@@ -34,4 +34,7 @@ export default function RootLayout({
 /*
     전체적으로 썻기 때문에 이제 next-auth에 있는 signIn, signOut등  'use client' 에서 메서드를 호출하면 된다.
     useSession은 서버클라이언트에서 사용불가능, 클라이언트 서버에서만 사용 가능
+    https://next-auth.js.org/getting-started/client#usesession
+
+    참고👀 : https://velog.io/@s_soo100/Next.js-13Next.js-13.2%EB%B2%84%EC%A0%BC%EC%97%90-Next-auth-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
 */
