@@ -13,6 +13,10 @@ export const dynamic = 'force-dynamic'; // 이페이지는 다이나믹 페이�
 export default async function List() {
     let db = (await connectDB).db('forum');
     let result = await db.collection('post').find().toArray();
+    result = result.map((item: any)=>{
+        item._id = item._id.toString()
+        return item
+    })
 
     /* get 요청결과 캐싱기능 - 서버 자원 절약 및 db 부담을 줄일 수 있음
         await fetch('url', {cache: 'force-cache'}) <-> {cache: 'force-cache'} 를 생략해도 캐싱이 된다.
