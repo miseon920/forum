@@ -2,6 +2,7 @@ import React from 'react'
 import { connectDB } from '@/util/database';
 import { ObjectId } from 'mongodb'
 import Comment from '../Comment';
+import LikeBtn from '../LikeBtn';
 
 
 export default async function Detail(props: any) {
@@ -16,6 +17,7 @@ export default async function Detail(props: any) {
             <h4>상세페이지</h4>
             <h3>{result.title}</h3>
             <p>{result.content}</p>
+            <LikeBtn contentId={result._id.toString()}/>
             <Comment contentId={result._id.toString()}/>
         </div>
     </div>

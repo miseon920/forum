@@ -8,8 +8,7 @@ import {useSession} from 'next-auth/react'
 const Comment = ({contentId}: any) => {
     let [comment, setComment] = useState('');
     let [data, setData] = useState<any[]>([]);
-    //let [replay, setReplay] = useState('');
-    // const { data: session } = useSession();
+    //const { data: session } = useSession();
 
     // 컴포넌트 로드시 서버에 데이터 요청을함
     useEffect(()=>{ // html 로드 후 useEffect 실행
@@ -32,10 +31,6 @@ const Comment = ({contentId}: any) => {
                                         <span>{item.name} : </span>
                                         <span>{item.content}</span>
                                     </div>
-                                    <div>
-                                        <button>조아요</button>
-                                        <button className='mx-2'>싫어요</button>
-                                    </div>
                                 </li>
                             )
                         })
@@ -52,7 +47,10 @@ const Comment = ({contentId}: any) => {
                             contentId,
                             // email: session?.user?.email - 유저가 보내면 조작할수도있어서 서버에서 조회함
                         })
-                    })
+                    }).then((result) => result.json()).
+                    then((result)=>{
+                        alert(result);
+                    }).catch(e => console.log(e));
                 }}>댓글 전송</button>
             </div>
         </div>

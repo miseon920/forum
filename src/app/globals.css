@@ -104,3 +104,6 @@ footer {
 .commentBox button{
     height: 45px;
 }
+.likeBtn button{
+    background: #000 !important;
+}

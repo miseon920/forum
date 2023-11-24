@@ -13,7 +13,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
             content: data.comment,
             contentId: new ObjectId(data.contentId),
             email: session.user?.email,
-            name: session.user?.name
+            name: session.user?.name,
         }
 
         if (!session.user?.email) {
