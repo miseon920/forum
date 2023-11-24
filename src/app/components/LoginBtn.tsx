@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { signIn, signOut, useSession} from 'next-auth/react'
+import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation' // next/router가 아니라 next/navigation 임
 
 export default function LoginBtn() {  //{session}: any  - props 제거 해보기 - 전체적으로 쓸것으로 정의했기 때문
     
@@ -17,12 +18,17 @@ export default function LoginBtn() {  //{session}: any  - props 제거 해보기
   2. status의 값 
    "loading" | "authenticated" | "unauthenticated"
   */
+   let router = useRouter();
   return (
     <>
         {
             session? 
             <span>{session.user?.name}<button onClick={()=>{ signOut() }}>로그아웃</button></span>
-            :<button onClick={()=>{ signIn() }}>로그인</button>
+            :
+            <>
+                <button onClick={()=>{ signIn() }}>로그인</button>
+                <button className='mx-2' onClick={()=>{ router.push(`/join`) }}>회원가입</button>
+            </>
         }
     </>
   )

@@ -1,15 +1,12 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 
 *, ::before, ::after{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-body{
-
 }
 ul,ol,dl{
     list-style: none;
@@ -54,6 +51,10 @@ a{
     height: 50px;
 }
 
+input , textarea {
+    border:1px solid #ddd;
+}
+
 .write textarea{
     height: 300px;
     padding: 10px;
@@ -69,7 +70,7 @@ input {
 }
 button {
     padding: 10px 15px;
-    background: lightgray;
+    background: lightgray !important;
     border: none;
     border-radius: 5px;
 } 
