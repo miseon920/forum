@@ -1,6 +1,8 @@
 import React from 'react'
 import { connectDB } from '@/util/database';
 import { ObjectId } from 'mongodb'
+import Comment from '../Comment';
+
 
 export default async function Detail(props: any) {
     let db = (await connectDB).db('forum');
@@ -14,6 +16,7 @@ export default async function Detail(props: any) {
             <h4>상세페이지</h4>
             <h3>{result.title}</h3>
             <p>{result.content}</p>
+            <Comment contentId={result._id.toString()}/>
         </div>
     </div>
   )
@@ -25,4 +28,8 @@ export default async function Detail(props: any) {
     - [폴더명] 으로 작명하기
     - params 에 id의 URL 파라미터로 들어간 값을 _id 로 바꿈
     - dynamic route로 만든 URL에 적은 문자를 가져오고 싶으면 컴포넌트에서 params 출력
+*/
+
+/*
+    클라이언트 컴포넌트를 생성하여 패치 또는 에이젝스로 만듬
 */

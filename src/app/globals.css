@@ -100,3 +100,7 @@ footer {
     opacity: 1;
     transition:  all 1s;
 }
+
+.commentBox button{
+    height: 45px;
+}

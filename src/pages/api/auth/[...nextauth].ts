@@ -67,6 +67,11 @@ export const authOptions: NextAuthOptions  = {
         token.user.role = user.role
         // 어드민 추가
       }
+    //   let db = (await connectDB).db('forum');
+    //   let data = await db.collection('users').updateOne(
+    //     { email: user.email},
+    //     { $set : {role: 'normal'}}
+    //   )
       return token;
     },
     //5. 유저 세션이 조회될 때 마다 실행되는 코드
