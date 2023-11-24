@@ -84,3 +84,14 @@ export default NextAuth(authOptions);
 
 // 코드작성
 // https://authjs.dev/ 페이지 참조
+
+/*
+    jwt를 이용하면 고객의 정보 유효기간이 들어있는대 이 유효기간을 길게하면
+    누군가 해킹했을경우 그 기간동안 대응할 수가 없다.
+    따라서 보통 30분정도 유지하며 그 유효기간이 지나면 새로운 jwt로 자동 발급하는 경우가 많다.
+
+    처음 가지고 있는 token을 access token 이라고 하며 재발급용 token을 refresh token 이라고 한다.
+    이때 서버에서는 다른 ip에서 refresh token이 제출되거나 사용했던 refresh token를 또사용 하는 유저를 감지한다.
+    jwt는 세션보다 db 조회가 적다는 이점이 있다. refresh token 사용할 때만 DB 조회하면 되기 때문이다.
+
+*/
