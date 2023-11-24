@@ -1,6 +1,6 @@
 import { connectDB } from '@/util/database';
 import { getServerSession } from 'next-auth'
-import { authOptions } from './auth/[...nextauth]';
+import { authOptions } from './auth/[...nextauth].js';
 
 export default async function handler(req, res) {
     let session = await getServerSession(req, res, authOptions) // 현재 로그인한 유저의 정보 가져오기 - await 까먹지말기
