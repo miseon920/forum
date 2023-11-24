@@ -6,8 +6,8 @@ export default async function Join() {
             <form action="/api/join" method='POST'>
                 <h4>회원가입</h4>
                 {/*action에 url인 /api/api 주소로 요청 보냄, form은 get과 post만 쓸 수 있음 */}
-                <input type="text" name='id' placeholder='아이디' />
-                <input name='pw' placeholder='패수워드' />
+                <input type="text" name='email' placeholder='이메일' />
+                <input name='password' placeholder='패수워드' />
                 <input name='name' placeholder='이름' />
                 <button type='submit'>확인</button>
             </form>
