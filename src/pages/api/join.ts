@@ -26,7 +26,6 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
         } else if (req.body.name == '') {
             return res.status(500).json('이름 입력');
         }
-
         if (result.find((con:any) => con.email == req.body.email)) {
             return res.status(500).json('중복');
         }

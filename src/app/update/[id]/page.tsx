@@ -17,7 +17,7 @@ export default async function Update(props: any) {
     // await db.collection('post').UpdateOne({ _id: new ObjectId(props.params.id)},{
     //     $set:{title: '', content: ''}
     // });
-    console.log(result, session);
+    //console.log(result, session);
   return (
     <>
     {  session && result.author == session.user?.email ?

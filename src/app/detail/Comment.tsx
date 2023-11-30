@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import {useSession} from 'next-auth/react'
 // export interface commentInfo {
 //     comment: string
@@ -10,14 +10,18 @@ const Comment = ({contentId}: any) => {
     let [data, setData] = useState<any[]>([]);
     //const { data: session } = useSession();
 
-    // 컴포넌트 로드시 서버에 데이터 요청을함
-    useEffect(()=>{ // html 로드 후 useEffect 실행
+    const getInit = useCallback(async () => {
         //contentId로 해도되고 props.params.id를 써도 된다.
         fetch(`/api/comment/list?id=${contentId}`).then((result) => result.json()).
         then((result)=>{
             setData(result);
-        }).catch(e => console.log(e));
-    },[data])
+        }).
+        catch(e => console.log(e));
+    },[data]);
+    // 컴포넌트 로드시 서버에 데이터 요청을함
+    useEffect(()=>{ // html 로드 후 useEffect 실행
+        getInit();
+    },[getInit])
   return (
     <>
         <div className='commentBox'>
@@ -50,6 +54,7 @@ const Comment = ({contentId}: any) => {
                     }).then((result) => result.json()).
                     then((result)=>{
                         alert(result);
+                        setComment(""); // 왜 안비워질까...ㅠㅠ
                     }).catch(e => console.log(e));
                 }}>댓글 전송</button>
             </div>

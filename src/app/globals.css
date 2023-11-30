@@ -107,3 +107,7 @@ footer {
 .likeBtn button{
     background: #000 !important;
 }
+.likeBtn button.on{
+    color: yellow !important;
+    font-weight: 700;
+}

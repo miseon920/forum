@@ -15,10 +15,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
             email: session.user?.email,
             name: session.user?.name,
         }
-
-        if (!session.user?.email) {
-            return res.status(500).json('로그인하세요');
-        } else if (data.comment == '') {
+        if (data.comment == '') {
             return res.status(500).json('내용쓰삼'); // 프론트에서도 체크하고 위조가능성이 있으므로 백에서도 체크하기
         } else if (!data.contentId) {
             return res.status(500).json('해당글이 존재 하지 않음');
@@ -31,11 +28,14 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
             // console.log(result);
             // insertOne()은 promise를 리턴하므로 await 키워드를 붙여주고, 결과값을 result 변수에 담음
             // client.close(); 
-             res.status(200).json('처리완료');
+             res.status(200).json('댓글이 작성 되었습니다.');
         } catch (error){
             // db에러가 낫을경우 예외처리
             res.status(400).json('에러낫군!');
         }
 
-     }
+    }
+    if (!session?.user?.email) {
+        return res.status(500).json('로그인하세요');
+    }
 }
