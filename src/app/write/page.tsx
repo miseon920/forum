@@ -1,18 +1,27 @@
-'use client'
+// 'use client'
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import {useSession} from 'next-auth/react'
+import { redirect } from "next/navigation";
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
 
-export default function Write() {
-    const { data: session } = useSession();
-    const router = useRouter()
+export default async function Write() {
+    // const { data: session } = useSession();
+    // const router = useRouter()
 
-    useEffect(()=>{ 
-        if (!session) {
-            alert('회원만 글쓰기가 가능합니다.');
-            router.push(`/`);
-        }
-    },[])
+    // useEffect(()=>{ 
+    //     if (!session) {
+    //         alert('회원만 글쓰기가 가능합니다.');
+    //         router.push(`/`);
+    //     }
+    // },[])
+
+    let session = await getServerSession(authOptions);
+
+    if (!session) {
+        redirect("/");  //위의 방식보다는 서버컴포넌트에서 할수 있는 방법으로 처리
+    }
   return (
     <div className='write p-20'>
         <form action="/api/write" method='POST'>

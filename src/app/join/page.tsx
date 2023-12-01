@@ -1,19 +1,13 @@
-'use client'
+import { redirect } from "next/navigation";
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
 
-import { connectDB } from '@/util/database';
-import {useSession} from 'next-auth/react'
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation'
+export default async function Join() {
+    let session = await getServerSession(authOptions);
 
-export default function Join() {
-    const { data: session } = useSession();
-    const router = useRouter()
-
-    useEffect(()=>{ 
-        if (session) {
-            router.push(`/`);
-        }
-    },[session])
+    if (session) {
+        redirect("/");
+    }
     return (
         <div className='write p-20'>
             <form action="/api/join" method='POST'>

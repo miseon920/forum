@@ -1,8 +1,9 @@
 import React from 'react'
 import { connectDB } from '@/util/database';
 import { ObjectId } from 'mongodb'
-import Comment from '../Comment';
-import LikeBtn from '../LikeBtn';
+import Comment from './Comment';
+import LikeBtn from './LikeBtn';
+import { notFound } from 'next/navigation';
 
 
 export default async function Detail(props: any) {
@@ -10,7 +11,11 @@ export default async function Detail(props: any) {
     // let result = await db.collection('post').findOne({title: '안녕'}); // 게시물 한개만 찾을때 - 제목으로 가져오면 중복이 걸리면 하나만 가져오므로 보통 id로 가져온다.
     let result = await db.collection('post').findOne({ _id: new ObjectId(props.params.id)});
     // MongoDB에서 게시물 하나만 찾고 싶으면 .findOne() 
-    //console.log(props.params); //   props결과  { params: { id: '1' }, searchParams: {} }
+    // console.log(props.params); //   props결과  { params: { id: '1' }, searchParams: {} }
+    //result가 없을경우에 error페이지가 작동되므로 추가작성
+    // if (result === null) {
+    //     return notFound();
+    // }
   return (
     <div className='list-bg'>
         <div className="list-item">
