@@ -28,13 +28,11 @@ const LikeBtn = ({contentId}: any) => {
                                 setHateOn(true);
                                 setLikeOn(false);
                             }
+                        } else {
+                            setLikeOn(false);
+                            setHateOn(false);
                         }
-                        return result.json();
-                }).then((result)=>{
-                    if (result != '성공') {
-                        alert(result);
-                    }
-                    getInit();
+                        getInit();
                 }).catch(e => console.log(e));
             }
         } else {

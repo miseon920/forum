@@ -20,7 +20,8 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
 
             const LikeList = findList.filter((item:any) => item.email == session?.user?.email)
             if (LikeList.find((con:any) => con.state == data.state)) {
-                return res.status(200).json('이미 반응을 표현한 글입니다.');
+                let result = await db.collection('like').deleteOne({contentId: data.contentId, email: data.email})
+                return res.status(204).json('중복');
             } else {
                 const result = await db.collection('like').updateOne({ contentId: data.contentId, email: data.email }, {
                     $set: neweData
