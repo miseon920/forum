@@ -14,6 +14,7 @@ export default async function Home() {
     // console.log(result)
     return (
     <div className="main">
+        반가워요<br/>
         방명록 써주세요!
     </div>
     )
