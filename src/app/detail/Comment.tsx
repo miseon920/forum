@@ -17,7 +17,7 @@ const Comment = ({contentId}: any) => {
             setData(result);
         }).
         catch(e => console.log(e));
-    },[data]);
+    },[]);
     // 컴포넌트 로드시 서버에 데이터 요청을함
     useEffect(()=>{ // html 로드 후 useEffect 실행
         getInit();

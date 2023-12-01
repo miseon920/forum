@@ -1,10 +1,9 @@
 'use client'
 import React, { useEffect, useState, useCallback } from 'react'
-import { useSession} from 'next-auth/react'
+import { getSession, useSession} from 'next-auth/react'
 
 const LikeBtn = ({contentId}: any) => {
     const { data: session, status } = useSession();
-    let [likeData, setlikeData] = useState<any[]>([]);
     const [likeOn, setLikeOn] = useState(false);
     const [hateOn, setHateOn] = useState(false);
 
@@ -43,10 +42,12 @@ const LikeBtn = ({contentId}: any) => {
     const getInit = useCallback(async () => {
         //useCallback은 함수를 새로 만들지 않고 재사용하고 싶을 때 사용하는 hook이다
         //의존성 배열에 넣은 값이 변경되기 전까지 재사용
-        fetch(`/api/comment/likeList?id=${contentId}`).then((result) => result.json()).
+        const session = await getSession();
+        //https://next-auth.js.org/v3/getting-started/client 
+        // 세션 개체가 포함된 Promise를 호출 /api/auth/session하고 반환합니다. 세션이 없으면 null을 반환합니다.
+        await fetch(`/api/comment/likeList?id=${contentId}`).then((result) => result.json()).
         then((result)=>{
-            setlikeData(result);
-            const LikeList = result.filter((item:any) => item.email == session?.user?.email);
+            const LikeList = result.filter((item:any) => item.email == session?.user?.email);                
             if (LikeList[0].state) {
                 if (LikeList[0].state == 'like') {
                     setLikeOn(true);
@@ -54,9 +55,8 @@ const LikeBtn = ({contentId}: any) => {
                     setHateOn(true);
                 }
             }
-           // console.error(result, '22');
         }).catch(e => console.log(e));
-      }, [likeData]);
+      }, [contentId]);
 
     useEffect(()=> {
         getInit();
