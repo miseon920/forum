@@ -1,6 +1,19 @@
-import { connectDB } from '@/util/database';
+'use client'
 
-export default async function Join() {
+import { connectDB } from '@/util/database';
+import {useSession} from 'next-auth/react'
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation'
+
+export default function Join() {
+    const { data: session } = useSession();
+    const router = useRouter()
+
+    useEffect(()=>{ 
+        if (session) {
+            router.push(`/`);
+        }
+    },[session])
     return (
         <div className='write p-20'>
             <form action="/api/join" method='POST'>

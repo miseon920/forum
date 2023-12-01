@@ -16,7 +16,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
             name: session.user?.name,
         }
         if (data.comment == '') {
-            return res.status(500).json('내용쓰삼'); // 프론트에서도 체크하고 위조가능성이 있으므로 백에서도 체크하기
+            return res.status(200).json('내용쓰삼'); // 프론트에서도 체크하고 위조가능성이 있으므로 백에서도 체크하기
         } else if (!data.contentId) {
             return res.status(500).json('해당글이 존재 하지 않음');
         }

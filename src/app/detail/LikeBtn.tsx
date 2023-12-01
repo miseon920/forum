@@ -80,3 +80,11 @@ const LikeBtn = ({contentId}: any) => {
 }
 
 export default LikeBtn
+
+/*
+
+useSession클라이언트에서만 작동하고 UI를 업데이트하는 데 도움이 되는 상태를 반환하는 ReactJS 훅이다.
+getSession 현재 쿠키를 읽고 세션을 반환하는 비동기 함수는 클라이언트와 서버 모두에서 작동한다.
+
+비동기 함수 안에서 사용할때는 getSession을 사용하자.
+*/

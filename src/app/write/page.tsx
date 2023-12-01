@@ -1,6 +1,18 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import {useSession} from 'next-auth/react'
 
 export default function Write() {
+    const { data: session } = useSession();
+    const router = useRouter()
+
+    useEffect(()=>{ 
+        if (!session) {
+            alert('회원만 글쓰기가 가능합니다.');
+            router.push(`/`);
+        }
+    },[])
   return (
     <div className='write p-20'>
         <form action="/api/write" method='POST'>
