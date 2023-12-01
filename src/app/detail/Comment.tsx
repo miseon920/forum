@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, KeyboardEvent } from 'react'
 import {useSession} from 'next-auth/react'
 // export interface commentInfo {
 //     comment: string
@@ -10,6 +10,28 @@ const Comment = ({contentId}: any) => {
     let [data, setData] = useState<any[]>([]);
     //const { data: session } = useSession();
 
+    const handleOnKeyPress = (e : KeyboardEvent<HTMLInputElement>) => {
+        // 키보드 이벤트 추가시 import 해야한다.
+        if (e.key === 'Enter') {
+            commentSubmit(); // Enter 입력이 되면 클릭 이벤트 실행
+        }
+      };
+      // 인풋에 적용할 Enter 키 입력 함수
+
+    const commentSubmit = () => {
+        fetch('/api/comment/new', {
+            method: 'POST', 
+            body: JSON.stringify({
+                comment,
+                contentId,
+                // email: session?.user?.email - 유저가 보내면 조작할수도있어서 서버에서 조회함
+            })
+        }).then((result) => result.json()).
+        then((result)=>{
+            alert(result);
+            getInit();
+        }).catch(e => console.log(e));
+    }
     const getInit = useCallback(async () => {
         //contentId로 해도되고 props.params.id를 써도 된다.
         await fetch(`/api/comment/list?id=${contentId}`).then((result) => result.json()).
@@ -43,22 +65,9 @@ const Comment = ({contentId}: any) => {
                 </ul>
             </div>
             <div className='flex'>
-                <input type="text" onChange={(e)=>{setComment(e.target.value)}} value={comment}/>
+                <input type="text" onChange={(e)=>{setComment(e.target.value)}} value={comment} onKeyDown={(e)=>handleOnKeyPress(e)}/>
                 {/* input의 value에 입력으로 받는 comment 상태를 설정해야 비울수가 있다. */}
-                <button className='mx-2' onClick={()=>{
-                    fetch('/api/comment/new', {
-                        method: 'POST', 
-                        body: JSON.stringify({
-                            comment,
-                            contentId,
-                            // email: session?.user?.email - 유저가 보내면 조작할수도있어서 서버에서 조회함
-                        })
-                    }).then((result) => result.json()).
-                    then((result)=>{
-                        alert(result);
-                        getInit();
-                    }).catch(e => console.log(e));
-                }}>댓글 전송</button>
+                <button className='mx-2' onClick={()=> commentSubmit()}>댓글 전송</button>
             </div>
         </div>
     </>
