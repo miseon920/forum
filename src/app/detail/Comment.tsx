@@ -49,7 +49,7 @@ const Comment = ({contentId}: any) => {
     <>
         <div className='commentBox'>
             <div className='px-2 py-2'>
-                <h4>댓글</h4>
+                <h4>댓글 <span>({data.length})</span></h4>
                 <ul>
                     { data && data.map((item, idx) => {
                             return(

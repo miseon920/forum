@@ -6,6 +6,8 @@ const LikeBtn = ({contentId}: any) => {
     const { data: session, status } = useSession();
     const [likeOn, setLikeOn] = useState(false);
     const [hateOn, setHateOn] = useState(false);
+    const [likeCnt, setLikeCnt] = useState(0);
+    const [hateCnt, setHateCnt] = useState(0);
 
     function likeHandle(state: string) {
         if (session) {
@@ -32,6 +34,7 @@ const LikeBtn = ({contentId}: any) => {
                     if (result != '성공') {
                         alert(result);
                     }
+                    getInit();
                 }).catch(e => console.log(e));
             }
         } else {
@@ -47,9 +50,16 @@ const LikeBtn = ({contentId}: any) => {
         // 세션 개체가 포함된 Promise를 호출 /api/auth/session하고 반환합니다. 세션이 없으면 null을 반환합니다.
         await fetch(`/api/comment/likeList?id=${contentId}`).then((result) => result.json()).
         then((result)=>{
-            const LikeList = result.filter((item:any) => item.email == session?.user?.email);                
-            if (LikeList[0].state) {
-                if (LikeList[0].state == 'like') {
+            if (result) {
+                const likeList = result.filter((item:any) => item.state == 'like');
+                const hateList = result.filter((item:any) => item.state == 'hate');
+
+                setLikeCnt(likeList.length);
+                setHateCnt(hateList.length);
+            }
+            const myLikeList = result.filter((item:any) => item.email == session?.user?.email);
+            if (myLikeList[0].state) {
+                if (myLikeList[0].state == 'like') {
                     setLikeOn(true);
                 } else {
                     setHateOn(true);
@@ -63,8 +73,8 @@ const LikeBtn = ({contentId}: any) => {
     },[getInit])
   return (
     <div className='likeBtn'>
-        <button className={`text-white ${likeOn ? 'on' : ''}`} onClick={()=> likeHandle("like")}>조아요👍</button>
-        <button className={`mx-2 text-white ${hateOn ? 'on' : ''}`} onClick={()=> likeHandle("hate")}>싫어요👎</button>
+        <button className={`text-white ${likeOn ? 'on' : ''}`} onClick={()=> likeHandle("like")}>조아요👍 ({likeCnt})</button>
+        <button className={`mx-2 text-white ${hateOn ? 'on' : ''}`} onClick={()=> likeHandle("hate")}>싫어요👎 ({hateCnt})</button>
     </div>
   )
 }
