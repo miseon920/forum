@@ -12,12 +12,13 @@ const Comment = ({contentId}: any) => {
 
     const getInit = useCallback(async () => {
         //contentId로 해도되고 props.params.id를 써도 된다.
-        fetch(`/api/comment/list?id=${contentId}`).then((result) => result.json()).
+        await fetch(`/api/comment/list?id=${contentId}`).then((result) => result.json()).
         then((result)=>{
             setData(result);
+            setComment('');
         }).
         catch(e => console.log(e));
-    },[]);
+    },[contentId]);
     // 컴포넌트 로드시 서버에 데이터 요청을함
     useEffect(()=>{ // html 로드 후 useEffect 실행
         getInit();
@@ -42,7 +43,8 @@ const Comment = ({contentId}: any) => {
                 </ul>
             </div>
             <div className='flex'>
-                <input type="text" onChange={(e)=>{setComment(e.target.value)}} />
+                <input type="text" onChange={(e)=>{setComment(e.target.value)}} value={comment}/>
+                {/* input의 value에 입력으로 받는 comment 상태를 설정해야 비울수가 있다. */}
                 <button className='mx-2' onClick={()=>{
                     fetch('/api/comment/new', {
                         method: 'POST', 
@@ -54,7 +56,7 @@ const Comment = ({contentId}: any) => {
                     }).then((result) => result.json()).
                     then((result)=>{
                         alert(result);
-                        setComment(""); // 왜 안비워질까...ㅠㅠ
+                        getInit();
                     }).catch(e => console.log(e));
                 }}>댓글 전송</button>
             </div>
