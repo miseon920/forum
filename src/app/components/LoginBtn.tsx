@@ -3,6 +3,7 @@
 import React from 'react'
 import { signIn, signOut, useSession} from 'next-auth/react'
 import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation' // next/router가 아니라 next/navigation 임
+import ToggleMode from './ToggleMode';
 
 export default function LoginBtn() {  //{session}: any  - props 제거 해보기 - 전체적으로 쓸것으로 정의했기 때문
     
@@ -20,17 +21,18 @@ export default function LoginBtn() {  //{session}: any  - props 제거 해보기
   */
    let router = useRouter();
   return (
-    <>
+    <ul className='flex items-center justify-end lnb'>
+        <li><ToggleMode/></li>
         {
             session? 
-            <span>{session.user?.name}<button onClick={()=>{ signOut() }}>로그아웃</button></span>
+            <li><span>{session.user?.name}</span><button onClick={()=>{ signOut() }}>로그아웃</button></li>
             :
             <>
-                <button onClick={()=>{ signIn() }}>로그인</button>
-                <button className='mx-2' onClick={()=>{ router.push(`/join`) }}>회원가입</button>
+                <li><button onClick={()=>{ signIn() }}>로그인</button></li>
+                <li><button className='mx-2' onClick={()=>{ router.push(`/join`) }}>회원가입</button></li>
             </>
         }
-    </>
+    </ul>
   )
 }
 

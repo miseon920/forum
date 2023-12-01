@@ -9,15 +9,22 @@ export default async function Header() {
     // await getServerSession(authOptions) // async awit 방식으로 써야한다. 
     let session = await getServerSession(authOptions) // async awit 방식으로 써야한다.
   return (
-    <div className="navbar"> 
-        <Link href="/" className="logo">Appleforum</Link> 
-        <Link href="/list">List</Link>
-        {
-            session? <Link href="/write">Write</Link>
-            : null
-
-        }
+    <header>
         <LoginBtn />
-    </div>
+        <div className="navbar">
+            <div className='flex items-center place-content-between'>
+                <h1>
+                    <Link href="/" className="logo">Appleforum</Link>
+                </h1>
+                <div>
+                    <Link href="/list">List</Link>
+                    {
+                        session? <Link href="/write">Write</Link>
+                        : null
+                    }
+                </div>
+            </div>
+        </div>
+    </header>
   )
 }

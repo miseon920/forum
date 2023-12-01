@@ -84,19 +84,21 @@ export default function ListItemFetch({result, session }: propsInfo) {
         {
             result.map((item:{}, idx:number)=>
                 <div className="list-item" key={idx}>
-                    <Link href={`/detail/${result[idx]._id}`} prefetch={false}> {/* 게시판의 경우 모든 링크를 다 볼게 아니므로 미리로드할 필요가 없으므로 프리패치를 모두 다 시키면 무리가 있으므로 prefetch={false} 시킴 : 개발중에는 확인 불가하고 배포환경에서 확인가능 */}
+                    <Link href={`/detail/${result[idx]._id}`} prefetch={false} className='block'> {/* 게시판의 경우 모든 링크를 다 볼게 아니므로 미리로드할 필요가 없으므로 프리패치를 모두 다 시키면 무리가 있으므로 prefetch={false} 시킴 : 개발중에는 확인 불가하고 배포환경에서 확인가능 */}
                         {/* object로 나올경우 result[idx]._id.toString() 으로 하여 문자로 변환 시켜야함 */}
-                        <h4>{result[idx].title}</h4>
-                        <p>1월 1일</p>
+                        <div className='flex place-content-between items-center'>
+                            <h4>{result[idx].title}</h4>
+                            <p>1월 1일</p>
+                        </div>
                     </Link>
                     {
                         session && session.user.email == result[idx].author ?
-                        <>
+                        <div className='text-right'>
                             <DetailLink item={item}/>
                             <button className='delBtn' onClick={(e)=> {
                                 deletePost(item, e);
                             }}>삭제 🗑️</button>
-                        </>
+                        </div>
                     : null
                     }
                     

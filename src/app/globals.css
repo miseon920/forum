@@ -8,6 +8,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+body{
+    line-height: 1;
+}
 ul,ol,dl{
     list-style: none;
 }
@@ -26,9 +29,14 @@ a{
     box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
 }
 .list-item h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    text-align: left;
+}
+.list-item h3{
     font-size: 20px;
     font-weight: 800;
-    margin: 0;
 }
 .list-item p {
     color: grey;
@@ -66,13 +74,15 @@ input {
     box-sizing: border-box;
     padding: 10px;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 0;
+    height: 40px;
 }
 button {
     padding: 10px 15px;
     background: lightgray !important;
     border: none;
     border-radius: 5px;
+    font-size: 12px;
 } 
 .navbar {
     background: white;
@@ -89,6 +99,15 @@ button {
 .main{
     padding:100px 20px;
 }
+.lnb{
+    padding: 5px 0;
+    border-bottom:1px solid #d5d5d5;
+    gap:10px
+}
+.lnb span{
+    display: inline-block;
+    padding-right: 10px;
+}
 footer {
     padding: 50px 20px;
 }
@@ -102,7 +121,12 @@ footer {
 }
 
 .commentBox button{
-    height: 45px;
+    height: 40px;
+}
+.likeBtn {
+    text-align: right;
+    font-size: 12px;
+    padding:15px 0;
 }
 .likeBtn button{
     background: #000 !important;
@@ -110,4 +134,8 @@ footer {
 .likeBtn button.on{
     color: yellow !important;
     font-weight: 700;
+}
+.commentBg{
+    text-align: left;
+    padding-top: 10px;
 }
