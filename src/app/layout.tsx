@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import AuthSession from "./components/AuthSession";
+//서버 컴포넌트에서 쿠키 읽기
+import { cookies } from 'next/headers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,9 +19,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode,
 }) {
+
+    //cookies(); // 모튼쿠키 가져옴
+    let cookie = cookies().get('displayCookie'); // get안에 쿠키이름적기
+    // console.error(cookie, '쿠키이름내놔'); // { name: 'displayCookie', value: 'light' }
+
   return (
     <html lang="en">
-      <body className={`${inter.className} text-center`}>
+      <body className={`${inter.className} text-center ${cookie?.value}`}>
         <AuthSession>
             <Header />
             {children}

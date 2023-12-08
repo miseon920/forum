@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 
 const ToggleMode = () => {
     const [mode, setMode] = useState("light");
-    const [localMode, setLocalMode] = useState("");
 
     const displayMode = (display: string) => {
         if (display == 'light') {
