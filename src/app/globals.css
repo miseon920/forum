@@ -146,3 +146,8 @@ footer {
     background: #000;
     color:#fff;
 }
+
+.dark .list-bg{
+    background: #fff;
+    color:#000;
+}
