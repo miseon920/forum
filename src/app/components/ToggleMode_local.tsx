@@ -24,7 +24,7 @@ const ToggleMode = () => {
                 localStorage.setItem("displayMode", mode);
             }
         }
-    },[])
+    },[mode])
   return (
     <div className='displayMode' onClick={()=> displayMode(mode)}>
         {

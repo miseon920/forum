@@ -3,7 +3,7 @@
 import React from 'react'
 import {handleSubmit} from './action'
 
-export default async function Write2() { //use server 사용시 async를 붙여줘야 한다.
+export default function Write2() { //클라이언트 요소는 비동기 일 수 없다.
     // 'use client' 일경우 여기에 서버액션을 적으면 위험하므로 따로 작성한다.
     // async function handleSubmit2(formData: any) { // formData는 사용자가 보낸 정보
     //     'use server'  //서버에서 쓰는 api가 된다. async를 붙여줘야 한다. - 유저에게는 안보임

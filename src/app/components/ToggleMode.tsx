@@ -31,7 +31,7 @@ const ToggleMode = () => {
                 setMode(`${cookieVal}`);
             }
         }
-    },[])
+    },[mode])
   return (
     <div className='displayMode' onClick={()=> displayMode(mode)}>
         {

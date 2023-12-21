@@ -32,8 +32,8 @@ export default async function Write2() { //use server 사용시 async를 붙여�
                 <button type='submit'>버튼</button>
             </form>
             {
-                result ? result.map((res:any)=>
-                <p>글제목 : {res.title}</p>
+                result ? result.map((res:any, idx: number)=>
+                <p key={idx}>글제목 : {res.title}</p>
                 )
                 : null
             }
