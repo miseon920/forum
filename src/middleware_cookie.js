@@ -18,7 +18,6 @@ export async function middleware(request) {
 
     //회원가입 페이지 방문시 쿠키 visited = true 만들기
     if (request.nextUrl.pathname.startsWith('/join')) {
-        console.log('dd');
         const response = NextResponse.next();
 
         response.cookies.set({
