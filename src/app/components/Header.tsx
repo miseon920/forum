@@ -14,7 +14,7 @@ export default async function Header() {
         <div className="navbar">
             <div className='flex items-center place-content-between'>
                 <h1>
-                    <Link href="/" className="logo">SunnyBoard</Link>
+                    <Link href="/" className="logo">Sunny Board</Link>
                 </h1>
                 <div>
                     <Link href="/list">List</Link>
