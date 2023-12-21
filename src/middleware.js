@@ -16,7 +16,7 @@ export async function middleware(request) {
         if (session == null) {
             //NextResponse.redirect('/');
             console.log(request.url);
-            return NextResponse.redirect(new URL('http://localhost:3000/api/auth/signin'), request.url); 
+            return NextResponse.redirect(new URL('https://forum-one.vercel.app/api/auth/signin'), request.url); 
             // 보통 상대경로를 적나 풀경로를 적어줘야 할때도 있음 
         }
     }
