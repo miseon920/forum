@@ -88,7 +88,7 @@ export default function ListItemFetch({result, session }: propsInfo) {
                         {/* object로 나올경우 result[idx]._id.toString() 으로 하여 문자로 변환 시켜야함 */}
                         <div className='flex place-content-between items-center'>
                             <h4>{result[idx].title}</h4>
-                            <p>1월 1일</p>
+                            <p>날짜</p>
                         </div>
                     </Link>
                     {
